@@ -1,7 +1,6 @@
 package za.ac.cput.domain;
 
 import jakarta.persistence.*;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -12,12 +11,16 @@ public class Contact implements Serializable {
     private String email;
     private String phoneNumber;
 
-    protected Contact() {
+    protected Contact(String mail, String number) {
     }
 
     public Contact(Builder builder) {
         this.email = builder.email;
         this.phoneNumber = builder.phoneNumber;
+    }
+
+    protected Contact() {
+
     }
 
     public String getEmail() {

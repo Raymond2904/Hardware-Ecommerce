@@ -11,13 +11,13 @@ import java.util.Objects;
 public class Cart implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cartId;
+    private long cartId;
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CartItem> items = new ArrayList<>();
 
-    private Long userId;
-    private Double totalPrice;
+    private long userId;
+    private float totalPrice;
 
     protected Cart() {}
 
@@ -28,15 +28,15 @@ public class Cart implements Serializable {
         this.items = builder.items;
     }
 
-    public Long getCartId() {
+    public long getCartId() {
         return cartId;
     }
 
-    public Long getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public Double getTotalPrice() {
+    public float getTotalPrice() {
         return totalPrice;
     }
 
@@ -71,22 +71,22 @@ public class Cart implements Serializable {
     }
 
     public static class Builder {
-        private Long cartId;
-        private Long userId;
-        private Double totalPrice;
+        private long cartId;
+        private long userId;
+        private float totalPrice;
         private List<CartItem> items = new ArrayList<>();
 
-        public Builder setCartId(Long cartId) {
+        public Builder setCartId(long cartId) {
             this.cartId = cartId;
             return this;
         }
 
-        public Builder setUserId(Long userId) {
+        public Builder setUserId(long userId) {
             this.userId = userId;
             return this;
         }
 
-        public Builder setTotalPrice(Double totalPrice) {
+        public Builder setTotalPrice(float totalPrice) {
             this.totalPrice = totalPrice;
             return this;
         }

@@ -10,8 +10,9 @@ import java.util.Objects;
 public class CartItem implements Serializable {
 
     @Id
-    private Long cartItemID;
-    private Long productID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long cartItemID;
+    private long productID;
     @ManyToOne
     @JoinColumn(name = "CartId", nullable = false)
     private Cart cart;
@@ -29,11 +30,11 @@ public class CartItem implements Serializable {
         this.price = builder.price;
     }
 
-    public Long getCartItemID() {
+    public long getCartItemID() {
         return cartItemID;
     }
 
-    public Long getProductID() {
+    public long getProductID() {
         return productID;
     }
 
@@ -78,18 +79,18 @@ public class CartItem implements Serializable {
     }
 
     public static class Builder {
-        private Long cartItemID;
-        private Long productID;
+        private long cartItemID;
+        private long productID;
         private Cart cart;
         private int quantity;
         private float price;
 
-        public Builder setCartItemID(Long cartItemID) {
+        public Builder setCartItemID(long cartItemID) {
             this.cartItemID = cartItemID;
             return this;
         }
 
-        public Builder setProductID(Long productID) {
+        public Builder setProductID(long productID) {
             this.productID = productID;
             return this;
         }

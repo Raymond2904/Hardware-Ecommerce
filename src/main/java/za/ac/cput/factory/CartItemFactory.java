@@ -2,21 +2,24 @@ package za.ac.cput.factory;
 
 import za.ac.cput.domain.Cart;
 import za.ac.cput.domain.CartItem;
+import za.ac.cput.util.Helper;
 
 public class CartItemFactory {
 
-    public static CartItem createCartItem(Long cartItemID, Long productID, Integer quantity, Cart cart) {
+    public static CartItem createCartItem(Cart cart , long productID, int quantity,  float price) {
 
-        if (cartItemID == null || productID == null || quantity == null || quantity <= 0 || cart == null) {
-            return null;
+        if ( Helper.isNullOrEmpty(String.valueOf(productID))
+               || Helper.isNullOrEmpty(String.valueOf(quantity))
+               || Helper.isNullOrEmpty(String.valueOf(cart.getUserId()))
+                || Helper.isNullOrEmpty(String.valueOf(price)) ) {
+           return null;
         }
 
-
         return new CartItem.Builder()
-                .setCartItemID(cartItemID)
                 .setProductID(productID)
                 .setQuantity(quantity)
                 .setCart(cart)
+                .setPrice(price)
                 .build();
     }
 }
